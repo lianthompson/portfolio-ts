@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { useMessages } from 'next-intl';
+import {NextIntlClientProvider} from 'next-intl';
+import {getLocale} from 'next-intl/server';
+import { Geist, Geist_Mono, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
+import styles from "./page.module.scss";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -9,6 +13,11 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const cormorantGaramond = Cormorant_Garamond({
+  variable: "--font-cormorant-garamond",
   subsets: ["latin"],
 });
 
@@ -22,10 +31,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+    // const messages = useMessages();
+
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable}`}>
+        <div className={styles.title_container}>
+          <div className={styles.title}>Lian Thompson&mdash;</div>
+          <div className={styles.subtitle}>Frontend Engineer</div>
+        </div>
         {children}
+        {/* <NextIntlClientProvider>{children}</NextIntlClientProvider> */}
       </body>
     </html>
   );
