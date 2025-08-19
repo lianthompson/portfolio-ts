@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import cn from 'classnames';
 import { useMessages } from 'next-intl';
 import {NextIntlClientProvider} from 'next-intl';
 import {getLocale} from 'next-intl/server';
@@ -32,15 +33,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-    // const messages = useMessages();
 
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable}`}>
-        <div className={styles.title_container}>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+      <body className={cn(styles.body,`${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable}`)}>
+        {/* <div className={styles.title_container}>
           <div className={styles.title}>Lian Thompson&mdash;</div>
           <div className={styles.subtitle}>Frontend Engineer</div>
-        </div>
+        </div> */}
         {children}
         {/* <NextIntlClientProvider>{children}</NextIntlClientProvider> */}
       </body>

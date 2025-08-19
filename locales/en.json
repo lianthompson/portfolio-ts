@@ -1,0 +1,10 @@
+// locales/en.json
+{
+  "common": {
+    "welcome": "Welcome to our website!"
+  },
+  "homepage": {
+    "title": "Lian Thompson",
+    "subtitle": "Frontend Developer"
+  }
+}

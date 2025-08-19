@@ -1,0 +1,37 @@
+@use "_variables.module.scss";
+
+.container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), -2px -2px 5px rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    padding: 20px;
+    transition: transform 0.2s ease-in-out; /* Adjust duration and timing function as needed */
+    flex-direction: column;
+    @include variables.mobile-ls {
+        flex-direction: row;
+    }
+    @include variables.tablet-ls {
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.02);
+            background-color: #FFFFFF;
+        }
+    }
+}
+
+.dates {
+    min-width: 250px;
+    font-size: 14px;
+}
+
+.title {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.content {
+    width: 100%;
+    font-size: 14px;
+}

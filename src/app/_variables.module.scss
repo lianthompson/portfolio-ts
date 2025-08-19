@@ -1,0 +1,37 @@
+
+$mobile: 576;
+$mobile-ls: 768;
+$tablet: 992;
+$tablet-ls: 1200;
+$desktop: 1400;
+
+@mixin text-style($font-size, $line-height) {
+    font-size: $font-size;
+    line-height: $line-height;
+}
+
+@mixin mobile {
+    @media (min-width: $mobile) {
+        @content;
+    }
+}
+@mixin mobile-ls {
+    @media (min-width: $mobile-ls) {
+        @content;
+    }
+}
+@mixin tablet {
+    @media (min-width: $tablet) {
+        @content;
+    }
+}
+@mixin tablet-ls {
+    @media (min-width: $tablet-ls) {
+        @content;
+    }
+}
+@mixin desktop {
+    @media (min-width: $desktop) {
+        @content;
+    }
+}
