@@ -50,8 +50,8 @@ export default function Home() {
       <main className={styles.main}>
         {/* <div className={styles.container}> */}
         <div className={styles.header_container}>
-          <div className={styles.title_container}>
-            <div className={styles.title} onClick={() => handleNavClick("")}>Lian Thompson</div>
+          <div className={styles.title_container} onClick={() => handleNavClick("")}>
+            <div className={styles.title}>Lian Thompson</div>
             <div className={styles.subtitle}>Frontend Engineer</div>
           </div>
 
@@ -91,6 +91,7 @@ export default function Home() {
             <div>
               Meanwhile, when I'm not pushing to GitHub, you can find me climbing, weaving, walking, and giggling. But more often than not I'm hanging out with my partner and our two cats.
             </div>
+          </div>
 
             <div className={styles.section} id="#experience">
               {screenSize < tabletLs && <div className={cn(styles.nav_mobile, { [styles.selected]: hash.includes("experience") })} onClick={() => handleNavClick("experience")}><div className={styles.dash_mobile}></div>EXPERIENCE</div>}
@@ -122,9 +123,9 @@ export default function Home() {
             </div>
             <div className={styles.section} id="#faq">
               {screenSize < tabletLs && <div className={cn(styles.nav_mobile, { [styles.selected]: hash.includes("faq") })} onClick={() => handleNavClick("faq")}><div className={styles.dash_mobile}></div>FAQ</div>}
-              faq lalalalal
+              <div className={styles.question}>Tell me about yourself briefly</div>
+              <div>I have a little over 6 years experience in software development focusing on frontend UI. My most recent role was at Ford Motor Company. I worked on an internal Console management app using Javascript, React, where I did a little bit of everything from bug fixes, feature implementation, and documentation. Before that I was at a company called Autonomic that made a transportation API that was acquired by Ford where I was the 60th hire. Before that I worked on a small startup of four and I also worked at Cruise as an autonomous vehicle operator.</div>
             </div>
-          </div>
         </div>
 </div>
       </main>

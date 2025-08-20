@@ -1,7 +1,10 @@
 @use "_variables.module.scss";
 
 .page {
-  margin: 32px;
+  margin: 64px 32px;
+  @include variables.tablet-ls {
+    margin-top: 0;
+  }
 }
 
 .main {
@@ -9,15 +12,18 @@
   flex-direction: column;
   gap: 32px;
   grid-row-start: 2;
+      @include variables.tablet-ls {
+        margin: 0 240px;
+      }
 }
 
 .title_container {
-  margin-top: 24px;
   display: flex;
   align-items: start;
   justify-content: flex-start;
   min-width: 320px;
   flex-direction: column;
+  cursor: pointer;
   @include variables.text-style(2rem, 2rem);
 
   @include variables.mobile-ls {
@@ -67,12 +73,23 @@
   display: flex;
   flex-direction: column;
   align-items: start;
+  width: 100%;
+  background: #faf9f6;
+    @include variables.tablet-ls {
+    padding-top: 64px;
+    position: fixed;
+    z-index: 10;
+  }
 }
 
 .nav_container {
   // display: block;
   // position: fixed;
   // left: 400px;
+          @include variables.tablet-ls {
+          position: fixed;
+          top: 228px;
+        }
 }
 
 .nav {
@@ -92,6 +109,7 @@
 }
 
 .nav_mobile {
+  font-weight: 600;
   @include variables.text-style(16px, 22px);
     &:hover {
     cursor: pointer;
@@ -116,13 +134,15 @@
 }
 
 .container {
-  height: 300px;
-  margin-bottom: 60px;
   display: flex;
-  gap: 32px;
+  gap: 120px;
+  flex-direction: column;
       @include variables.tablet-ls {
-      width: 80%;
-      justify-content: flex-end;
+        width: 80%;
+        justify-content: flex-end;
+        position: relative;
+        top: 200px;
+        left: 300px;
     }
   }
 
@@ -151,4 +171,8 @@
       justify-content: space-between;
       margin-top: 28px;
     }
+}
+
+.question {
+  font-weight: 600;
 }
