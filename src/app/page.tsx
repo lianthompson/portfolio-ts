@@ -17,27 +17,37 @@ export default function Home() {
   const router = useRouter();
 
   const [hash, setHash] = useState('');
+  const [innerHeight, setInnerHeight] = useState(0)
 
   useEffect(() => {
-        if (typeof window !== 'undefined') {
-      setHash(window.location.hash);
-        }
-    const handleHashChange = () => {
-      setHash(window.location.hash.toUpperCase())
-    }
-
-    window.addEventListener('hashchange', handleHashChange)
-
-    return () => {
-      window.removeEventListener('hashChange', handleHashChange);
+    setInnerHeight(window.innerWidth);
+    if (typeof window !== 'undefined') {
+    setInnerHeight(window.innerHeight);
     }
   }, [])
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined') {
+  //     setHash(window.location.hash);
+  //   }
+  //   const handleHashChange = () => {
+  //     setHash(window.location.hash.toUpperCase())
+  //   }
+
+  //   window.addEventListener('hashchange', handleHashChange)
+
+  //   return () => {
+  //     window.removeEventListener('hashChange', handleHashChange);
+  //   }
+  // }, [])
 
   const handleNavClick = (item) => {
+    console.log('item', item)
     setHash(item);
     router.push(`${pathname}/#${item.toLowerCase()}`);
   }
   const screenSize = useScreenSize();
+
+  if (innerHeight !== 0) {
   const bodyStyles = window && window.getComputedStyle(document.body);
   const mobile = bodyStyles.getPropertyValue('--breakpoint-xs');
   const mobileLs = bodyStyles.getPropertyValue('--breakpoint-sm');
@@ -69,9 +79,16 @@ export default function Home() {
         </div>
         <div className={styles.content_container}>
         <div className={styles.nav_container}>
-          {screenSize >= tabletLs && nav.map((item, i) => {
-            return <li key={i} className={cn(styles.nav, { [styles.selected]: hash.includes(item) })} onClick={() => handleNavClick(item.toLowerCase())}><div className={styles.dash}></div> {item}</li>
-          })}
+            {screenSize >= tabletLs && nav.map((item, i) => {
+              return (
+                <li
+                  key={i}
+                  className={cn(styles.nav, { [styles.selected]: hash.includes(item) })}
+                  onClick={() => handleNavClick(item.toLowerCase())}>
+                  <div className={styles.dash}></div> {item}
+                </li>
+              )
+            })}
           {/* {screenSize < tabletLs && nav.map((item, i) => {
             return <li key={i} className={cn(styles.nav_mobile, { [styles.selected]: hash.includes(item) })} onClick={() => handleNavClick(item.toLowerCase())}><div className={styles.dash_mobile}></div> {item}</li>
           })} */}
@@ -175,4 +192,6 @@ export default function Home() {
       </footer> */}
     </div>
   );
+  }
+
 }
