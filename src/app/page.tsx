@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import React, { useEffect, useState, useCallback } from 'react';
 import cn from 'classnames';
 import useScreenSize from "./useScreenSize";
 import JobCard from "./jobCard";
@@ -12,7 +12,6 @@ const nav = ["about", "experience", "faq"];
 const icons = ["LinkedIn"]
 
 export default function Home() {
-
   const pathname = usePathname();
   const router = useRouter();
 
@@ -24,16 +23,25 @@ export default function Home() {
     if (typeof window !== 'undefined') {
       setHash(window.location.hash);
     }
-    const handleHashChange = () => {
-      setHash(window.location.hash.toUpperCase())
-    }
+  }, []);
 
-    window.addEventListener('hashchange', handleHashChange);
-
-    return () => {
-      window.removeEventListener('hashChange', handleHashChange);
+  const experienceRef = useCallback(node => {
+    if (node !== null) {
+      window.location.hash.includes("experience") && node.scrollIntoView({behavior: 'smooth'})
     }
-  }, [])
+  }, []);
+
+  const aboutRef = useCallback(node => {
+    if (node !== null) {
+      window.location.hash.includes("about") && node.scrollIntoView({behavior: 'smooth'})
+    }
+  }, []);
+
+  const faqRef = useCallback(node => {
+    if (node !== null) {
+      window.location.hash.includes("faq") && node.scrollIntoView({behavior: 'smooth'})
+    }
+  }, []);
 
   const handleNavClick = (item) => {
     setHash(item);
@@ -92,7 +100,7 @@ export default function Home() {
           })} */}
             </div>
             <div className={styles.container}>
-              <div className={styles.section} id="#about">
+              <div className={styles.section} id="#about" ref={aboutRef}>
                 {screenSize < tabletLs && <div className={cn(styles.nav_mobile, { [styles.selected]: hash.includes("about") })} onClick={() => handleNavClick("about")}><div className={styles.dash_mobile}></div> ABOUT</div>}
                 <div className={styles.text}>
                   I specialize in bringing designs to life by creating reusable components and pixel perfect UI. I enjoy being part of the entire development cycle - from collaborating with stakeholders and users on how to make the best user experience, re-iterating, and shipping it. I'm happiest when the end users are happy.
@@ -108,7 +116,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className={styles.section} id="#experience">
+              <div className={styles.section} id="#experience" ref={experienceRef}>
                 {screenSize < tabletLs && <div className={cn(styles.nav_mobile, { [styles.selected]: hash.includes("experience") })} onClick={() => handleNavClick("experience")}><div className={styles.dash_mobile}></div>EXPERIENCE</div>}
                 <JobCard
                   start={"May 2025"}
@@ -136,7 +144,7 @@ export default function Home() {
                   title={"Software Engineer Apprentice | Techtonica"}
                   description={"Completed Techtonica's inaugural Fullstack Web Developer apprenticeship with 10 other women. Six month full-stack web development program learning MERN stack."} />
               </div>
-              <div className={styles.section} id="#faq">
+              <div className={styles.section} id="#faq" ref={faqRef}>
                 {screenSize < tabletLs && <div className={cn(styles.nav_mobile, { [styles.selected]: hash.includes("faq") })} onClick={() => handleNavClick("faq")}><div className={styles.dash_mobile}></div>FAQ</div>}
                 <div className={styles.question}>Tell me about yourself briefly</div>
                 <div>I have a little over 6 years experience in software development focusing on frontend UI. My most recent role was at Ford Motor Company. I worked on an internal Console management app using Javascript, React, where I did a little bit of everything from bug fixes, feature implementation, and documentation. Before that I was at a company called Autonomic that made a transportation API that was acquired by Ford where I was the 60th hire. Before that I worked on a small startup of four and I also worked at Cruise as an autonomous vehicle operator.</div>
