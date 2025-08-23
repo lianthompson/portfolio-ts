@@ -16,14 +16,47 @@ export default function Home() {
   const router = useRouter();
 
   const [hash, setHash] = useState('');
-  const [innerHeight, setInnerHeight] = useState(0)
+  const [innerHeight, setInnerHeight] = useState(0);
+  const [activeId, setActiveId] = useState('');
+  const options= {
+    threshold: .75,
+    trackVisibility: true,
+    delay: 100,
+    scrollMargin: '228px'
+  }
 
   useEffect(() => {
     setInnerHeight(window.innerWidth);
     if (typeof window !== 'undefined') {
       setHash(window.location.hash);
     }
+
+    window.addEventListener("load", () => {
+      // Retrieve all help sections
+      const sections = Array.from(document.querySelectorAll("[id]"));
+      // Creates a new scroll observer
+      const observer = new IntersectionObserver(scrollHandler, options);
+
+      //noinspection JSCheckFunctionSignatures
+      sections.forEach(section => observer.observe(section));
+    })
+
   }, []);
+
+  // Once a scrolling event is detected, iterate all elements
+  // whose visibility changed and highlight their navigation entry
+  const scrollHandler = (entries) => {
+    entries.forEach(entry => {
+      const section = entry.target;
+      const sectionId = section.id;
+      if (entry.isIntersecting && entry.intersectionRatio > 0 && entry.isVisible) {
+        setActiveId(sectionId)
+      }
+    });
+  }
+
+
+
 
   const experienceRef = useCallback(node => {
     if (node !== null) {
@@ -86,10 +119,11 @@ export default function Home() {
               {screenSize >= tabletLs && nav.map((item, i) => {
                 return (
                   <Link
+                    // id={`nav-${item}`}
                     scroll={false}
                     href={`#${item}`}
                     key={i}
-                    className={cn(styles.nav, { [styles.selected]: hash.includes(item) })}
+                    className={cn(styles.nav, { [styles.selected]: activeId == `#${item}`})}
                     onClick={() => handleNavClick(`#${item}`)}>
                     <div className={styles.dash}></div> {item}
                   </Link>
