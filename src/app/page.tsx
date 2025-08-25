@@ -33,7 +33,7 @@ export default function Home() {
 
     window.addEventListener("load", () => {
       // Retrieve all help sections
-      const sections = Array.from(document.querySelectorAll("[id]"));
+      const sections = Array.from(document.querySelectorAll("section[id]"));
       // Creates a new scroll observer
       const observer = new IntersectionObserver(scrollHandler, options);
 
@@ -134,7 +134,7 @@ export default function Home() {
           })} */}
             </div>
             <div className={styles.container}>
-              <div className={styles.section} id="#about" ref={aboutRef}>
+              <section className={cn(styles.section, {[styles.active]: activeId == "#about"})} id="#about" ref={aboutRef}>
                 {screenSize < tabletLs && <div className={cn(styles.nav_mobile, { [styles.selected]: hash.includes("about") })} onClick={() => handleNavClick("about")}><div className={styles.dash_mobile}></div> ABOUT</div>}
                 <div className={styles.text}>
                   I specialize in bringing designs to life by creating reusable components and pixel perfect UI. I enjoy being part of the entire development cycle - from collaborating with stakeholders and users on how to make the best user experience, re-iterating, and shipping it. I'm happiest when the end users are happy.
@@ -148,9 +148,9 @@ export default function Home() {
                 <div>
                   Meanwhile, when I'm not pushing to GitHub, you can find me climbing, weaving, walking, and giggling. But more often than not I'm hanging out with my partner and our two cats.
                 </div>
-              </div>
+              </section>
 
-              <div className={styles.section} id="#experience" ref={experienceRef}>
+              <section className={cn(styles.section, {[styles.active]: activeId == "#experience"})} id="#experience" ref={experienceRef}>
                 {screenSize < tabletLs && <div className={cn(styles.nav_mobile, { [styles.selected]: hash.includes("experience") })} onClick={() => handleNavClick("experience")}><div className={styles.dash_mobile}></div>EXPERIENCE</div>}
                 <JobCard
                   start={"May 2025"}
@@ -177,12 +177,12 @@ export default function Home() {
                   end={"June 2019"}
                   title={"Software Engineer Apprentice | Techtonica"}
                   description={"Completed Techtonica's inaugural Fullstack Web Developer apprenticeship with 10 other women. Six month full-stack web development program learning MERN stack."} />
-              </div>
-              <div className={styles.section} id="#faq" ref={faqRef}>
+              </section>
+              <section className={cn(styles.section, {[styles.active]: activeId == "#faq"})} id="#faq" ref={faqRef}>
                 {screenSize < tabletLs && <div className={cn(styles.nav_mobile, { [styles.selected]: hash.includes("faq") })} onClick={() => handleNavClick("faq")}><div className={styles.dash_mobile}></div>FAQ</div>}
                 <div className={styles.question}>Tell me about yourself briefly</div>
                 <div>I have a little over 6 years experience in software development focusing on frontend UI. My most recent role was at Ford Motor Company. I worked on an internal Console management app using Javascript, React, where I did a little bit of everything from bug fixes, feature implementation, and documentation. Before that I was at a company called Autonomic that made a transportation API that was acquired by Ford where I was the 60th hire. Before that I worked on a small startup of four and I also worked at Cruise as an autonomous vehicle operator.</div>
-              </div>
+              </section>
             </div>
           </div>
         </main>
