@@ -18,22 +18,24 @@ export default function Home() {
   const [hash, setHash] = useState('');
   const [innerHeight, setInnerHeight] = useState(0);
   const [activeId, setActiveId] = useState('');
-  const options= {
-    threshold: .75,
-    trackVisibility: true,
-    delay: 100,
-    scrollMargin: '228px'
-  }
+
 
   useEffect(() => {
     setInnerHeight(window.innerWidth);
     if (typeof window !== 'undefined') {
       setHash(window.location.hash);
+      setActiveId(window.location.hash);
     }
 
     window.addEventListener("load", () => {
       // Retrieve all help sections
       const sections = Array.from(document.querySelectorAll("section[id]"));
+      const options = {
+        threshold: [0, .25, .75, 1],
+        trackVisibility: true,
+        delay: 300,
+        scrollMargin: '228px'
+      }
       // Creates a new scroll observer
       const observer = new IntersectionObserver(scrollHandler, options);
 
@@ -49,14 +51,11 @@ export default function Home() {
     entries.forEach(entry => {
       const section = entry.target;
       const sectionId = section.id;
-      if (entry.isIntersecting && entry.intersectionRatio > 0 && entry.isVisible) {
+      if (entry.intersectionRatio >= .75 && entry.boundingClientRect.top <= 400 && entry.boundingClientRect.top >= 175) {
         setActiveId(sectionId)
       }
     });
   }
-
-
-
 
   const experienceRef = useCallback(node => {
     if (node !== null) {
@@ -96,7 +95,7 @@ export default function Home() {
     return (
       <div className={styles.page}>
         <main className={styles.main}>
-          <div className={styles.header_container}>
+          <div className={styles.header_container}  id="container">
             <div className={styles.title_container} onClick={() => handleNavClick("")}>
               <div className={styles.title}>Lian Thompson</div>
               <div className={styles.subtitle}>Frontend Engineer</div>
@@ -108,13 +107,6 @@ export default function Home() {
               <a href={"https://www.instagram.com/littleorphanliannie/"} target="_blank"><Image src="/icons8-instagram.svg" alt="instagram" height={22} width={22} /></a>
               <a href={"https://www.linkedin.com/in/lianthompson/"} target="_blank"><Image src="/icons8-linkedin.svg" alt="linkedin" height={22} width={22} /></a>
             </div>
-            {/* <div className={styles.nav_container}>
-            {nav.map((item, i) => {
-              return <li key={i} className={cn(styles.nav, { [styles.selected]: hash.includes(item) })} onClick={() => handleNavClick(item.toLowerCase())}><div className={styles.dash}></div> {item}</li>
-            })}
-          </div> */}
-          </div>
-          <div className={styles.content_container}>
             <div className={styles.nav_container}>
               {screenSize >= tabletLs && nav.map((item, i) => {
                 return (
@@ -133,6 +125,13 @@ export default function Home() {
             return <li key={i} className={cn(styles.nav_mobile, { [styles.selected]: hash.includes(item) })} onClick={() => handleNavClick(item.toLowerCase())}><div className={styles.dash_mobile}></div> {item}</li>
           })} */}
             </div>
+            {/* <div className={styles.nav_container}>
+            {nav.map((item, i) => {
+              return <li key={i} className={cn(styles.nav, { [styles.selected]: hash.includes(item) })} onClick={() => handleNavClick(item.toLowerCase())}><div className={styles.dash}></div> {item}</li>
+            })}
+          </div> */}
+          </div>
+          {/* <div className={styles.content_container}> */}
             <div className={styles.container}>
               <section className={cn(styles.section, {[styles.active]: activeId == "#about"})} id="#about" ref={aboutRef}>
                 {screenSize < tabletLs && <div className={cn(styles.nav_mobile, { [styles.selected]: hash.includes("about") })} onClick={() => handleNavClick("about")}><div className={styles.dash_mobile}></div> ABOUT</div>}
@@ -153,28 +152,28 @@ export default function Home() {
               <section className={cn(styles.section, {[styles.active]: activeId == "#experience"})} id="#experience" ref={experienceRef}>
                 {screenSize < tabletLs && <div className={cn(styles.nav_mobile, { [styles.selected]: hash.includes("experience") })} onClick={() => handleNavClick("experience")}><div className={styles.dash_mobile}></div>EXPERIENCE</div>}
                 <JobCard
-                  start={"May 2025"}
-                  end={"Present"}
+                  start={"MAY 2025"}
+                  end={"PRESENT"}
                   title={"Freelance Web Developer"}
                   description={"Building frontend websites and staying up to date with technologies. This site was built with TypeScript, Next.js, & Sass"} />
                 <JobCard
-                  start={"May 2023"}
-                  end={"May 2025"}
-                  title={"Software Engineer II, Cloud Platform Engineering | Ford Motor Company"}
+                  start={"MAY 2023"}
+                  end={"MAY 2025"}
+                  title={"Software Engineer II | Ford Motor Company"}
                   description={"Own feature development throughout entire development process. Maintain and develop critical components across two internal applications used by developers and support teams. Ensure REST api best practices across teams."} />
                 <JobCard
-                  start={"July 2019"}
-                  end={"May 2023"}
-                  title={"Software Engineer II, Transportation Mobility Cloud | Autonomic"}
+                  start={"JULY 2019"}
+                  end={"MAY 2023"}
+                  title={"Software Engineer II | Autonomic"}
                   description={"Implement new features and bug fixes. Mentor incoming team members and interns through pair programming, code review, and 1:1s."} />
                 <JobCard
-                  start={"July 2018"}
-                  end={"March 2019"}
+                  start={"JULY 2018"}
+                  end={"MARCH 2019"}
                   title={"Jr Software Engineer | Colark"}
                   description={"Build and deploy new components with React, GatsbyJS, Git, GraphQL, and Figma for colark.com"} />
                 <JobCard
-                  start={"January 2018"}
-                  end={"June 2019"}
+                  start={"JAN 2018"}
+                  end={"JUNE 2019"}
                   title={"Software Engineer Apprentice | Techtonica"}
                   description={"Completed Techtonica's inaugural Fullstack Web Developer apprenticeship with 10 other women. Six month full-stack web development program learning MERN stack."} />
               </section>
@@ -182,9 +181,15 @@ export default function Home() {
                 {screenSize < tabletLs && <div className={cn(styles.nav_mobile, { [styles.selected]: hash.includes("faq") })} onClick={() => handleNavClick("faq")}><div className={styles.dash_mobile}></div>FAQ</div>}
                 <div className={styles.question}>Tell me about yourself briefly</div>
                 <div>I have a little over 6 years experience in software development focusing on frontend UI. My most recent role was at Ford Motor Company. I worked on an internal Console management app using Javascript, React, where I did a little bit of everything from bug fixes, feature implementation, and documentation. Before that I was at a company called Autonomic that made a transportation API that was acquired by Ford where I was the 60th hire. Before that I worked on a small startup of four and I also worked at Cruise as an autonomous vehicle operator.</div>
+                <div className={styles.question}>Tell me about yourself briefly</div>
+                <div>I have a little over 6 years experience in software development focusing on frontend UI. My most recent role was at Ford Motor Company. I worked on an internal Console management app using Javascript, React, where I did a little bit of everything from bug fixes, feature implementation, and documentation. Before that I was at a company called Autonomic that made a transportation API that was acquired by Ford where I was the 60th hire. Before that I worked on a small startup of four and I also worked at Cruise as an autonomous vehicle operator.</div>
+                <div className={styles.question}>Tell me about yourself briefly</div>
+                <div>I have a little over 6 years experience in software development focusing on frontend UI. My most recent role was at Ford Motor Company. I worked on an internal Console management app using Javascript, React, where I did a little bit of everything from bug fixes, feature implementation, and documentation. Before that I was at a company called Autonomic that made a transportation API that was acquired by Ford where I was the 60th hire. Before that I worked on a small startup of four and I also worked at Cruise as an autonomous vehicle operator.</div>
+                <div className={styles.question}>Tell me about yourself briefly</div>
+                <div>I have a little over 6 years experience in software development focusing on frontend UI. My most recent role was at Ford Motor Company. I worked on an internal Console management app using Javascript, React, where I did a little bit of everything from bug fixes, feature implementation, and documentation. Before that I was at a company called Autonomic that made a transportation API that was acquired by Ford where I was the 60th hire. Before that I worked on a small startup of four and I also worked at Cruise as an autonomous vehicle operator.</div>
               </section>
             </div>
-          </div>
+          {/* </div> */}
         </main>
       </div>
     );

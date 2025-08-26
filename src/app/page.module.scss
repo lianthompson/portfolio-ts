@@ -137,12 +137,15 @@
   display: flex;
   gap: 120px;
   flex-direction: column;
+  padding-bottom: 60px;
+  // border: 1px solid red;
+  // max-width: 500px;
       @include variables.tablet-ls {
-        width: 80%;
+        width: 67%;
         justify-content: flex-end;
         position: relative;
-        top: 200px;
-        left: 300px;
+        top: 228px;
+        left: 240px;
     }
   }
 
@@ -152,6 +155,9 @@
   gap: 20px;
   scroll-margin-top: 228px;
   @include variables.text-style(16px, 22px);
+  &.active {
+    // border: 1px solid red;
+  }
 }
 
 .link {
