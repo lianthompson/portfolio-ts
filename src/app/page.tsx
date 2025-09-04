@@ -14,11 +14,11 @@ const icons = ["LinkedIn"]
 export default function Home() {
   const pathname = usePathname();
   const router = useRouter();
+  const screenSize = useScreenSize();
 
   const [hash, setHash] = useState('');
   const [innerHeight, setInnerHeight] = useState(0);
   const [activeId, setActiveId] = useState('');
-
 
   useEffect(() => {
     setInnerHeight(window.innerWidth);
@@ -28,14 +28,20 @@ export default function Home() {
     }
 
     window.addEventListener("load", () => {
+
       // Retrieve all help sections
       const sections = Array.from(document.querySelectorAll("section[id]"));
+
       const options = {
-        threshold: [0, .25, .75, 1],
+        // threshold: 0,
+        threshold: [0, .02, .05, .10, .15, .25, .5, .75, 1],
         trackVisibility: true,
         delay: 300,
-        scrollMargin: '228px'
+        scrollMargin: '228px',
+        root: null,
+        rootMargin: '-1px 0px 0px 0px', // Trigger just before reaching top
       }
+
       // Creates a new scroll observer
       const observer = new IntersectionObserver(scrollHandler, options);
 
@@ -51,7 +57,8 @@ export default function Home() {
     entries.forEach(entry => {
       const section = entry.target;
       const sectionId = section.id;
-      if (entry.intersectionRatio >= .75 && entry.boundingClientRect.top <= 400 && entry.boundingClientRect.top >= 175) {
+
+      if (entry.intersectionRatio >= .6 && entry.isIntersecting && entry.boundingClientRect.top <= 400) {
         setActiveId(sectionId)
       }
     });
@@ -82,7 +89,6 @@ export default function Home() {
     element?.scrollIntoView({ behavior: 'smooth' });
   }
 
-  const screenSize = useScreenSize();
 
   if (innerHeight !== 0) {
     const bodyStyles = window && window.getComputedStyle(document.body);
@@ -95,7 +101,7 @@ export default function Home() {
     return (
       <div className={styles.page}>
         <main className={styles.main}>
-          <div className={styles.header_container}  id="container">
+          <div className={styles.header_container}>
             <div className={styles.title_container} onClick={() => handleNavClick("")}>
               <div className={styles.title}>Lian Thompson</div>
               <div className={styles.subtitle}>Frontend Engineer</div>
@@ -111,7 +117,6 @@ export default function Home() {
               {screenSize >= tabletLs && nav.map((item, i) => {
                 return (
                   <Link
-                    // id={`nav-${item}`}
                     scroll={false}
                     href={`#${item}`}
                     key={i}
@@ -121,20 +126,11 @@ export default function Home() {
                   </Link>
                 )
               })}
-              {/* {screenSize < tabletLs && nav.map((item, i) => {
-            return <li key={i} className={cn(styles.nav_mobile, { [styles.selected]: hash.includes(item) })} onClick={() => handleNavClick(item.toLowerCase())}><div className={styles.dash_mobile}></div> {item}</li>
-          })} */}
             </div>
-            {/* <div className={styles.nav_container}>
-            {nav.map((item, i) => {
-              return <li key={i} className={cn(styles.nav, { [styles.selected]: hash.includes(item) })} onClick={() => handleNavClick(item.toLowerCase())}><div className={styles.dash}></div> {item}</li>
-            })}
-          </div> */}
           </div>
-          {/* <div className={styles.content_container}> */}
             <div className={styles.container}>
               <section className={cn(styles.section, {[styles.active]: activeId == "#about"})} id="#about" ref={aboutRef}>
-                {screenSize < tabletLs && <div className={cn(styles.nav_mobile, { [styles.selected]: hash.includes("about") })} onClick={() => handleNavClick("about")}><div className={styles.dash_mobile}></div> ABOUT</div>}
+                {screenSize < tabletLs && <div id="myHeader" className={styles.nav_mobile}> ABOUT</div>}
                 <div className={styles.text}>
                   I specialize in bringing designs to life by creating reusable components and pixel perfect UI. I enjoy being part of the entire development cycle - from collaborating with stakeholders and users on how to make the best user experience, re-iterating, and shipping it. I'm happiest when the end users are happy.
                 </div>
@@ -150,7 +146,7 @@ export default function Home() {
               </section>
 
               <section className={cn(styles.section, {[styles.active]: activeId == "#experience"})} id="#experience" ref={experienceRef}>
-                {screenSize < tabletLs && <div className={cn(styles.nav_mobile, { [styles.selected]: hash.includes("experience") })} onClick={() => handleNavClick("experience")}><div className={styles.dash_mobile}></div>EXPERIENCE</div>}
+                {screenSize < tabletLs && <div id="mobileExperience" className={styles.nav_mobile}>EXPERIENCE</div>}
                 <JobCard
                   start={"MAY 2025"}
                   end={"PRESENT"}
@@ -178,7 +174,11 @@ export default function Home() {
                   description={"Completed Techtonica's inaugural Fullstack Web Developer apprenticeship with 10 other women. Six month full-stack web development program learning MERN stack."} />
               </section>
               <section className={cn(styles.section, {[styles.active]: activeId == "#faq"})} id="#faq" ref={faqRef}>
-                {screenSize < tabletLs && <div className={cn(styles.nav_mobile, { [styles.selected]: hash.includes("faq") })} onClick={() => handleNavClick("faq")}><div className={styles.dash_mobile}></div>FAQ</div>}
+                {screenSize < tabletLs && <div id="mobileFaq" className={styles.nav_mobile}>FAQ</div>}
+                <div className={styles.question}>Tell me about yourself briefly</div>
+                <div>I have a little over 6 years experience in software development focusing on frontend UI. My most recent role was at Ford Motor Company. I worked on an internal Console management app using Javascript, React, where I did a little bit of everything from bug fixes, feature implementation, and documentation. Before that I was at a company called Autonomic that made a transportation API that was acquired by Ford where I was the 60th hire. Before that I worked on a small startup of four and I also worked at Cruise as an autonomous vehicle operator.</div>
+                <div className={styles.question}>Tell me about yourself briefly</div>
+                <div>I have a little over 6 years experience in software development focusing on frontend UI. My most recent role was at Ford Motor Company. I worked on an internal Console management app using Javascript, React, where I did a little bit of everything from bug fixes, feature implementation, and documentation. Before that I was at a company called Autonomic that made a transportation API that was acquired by Ford where I was the 60th hire. Before that I worked on a small startup of four and I also worked at Cruise as an autonomous vehicle operator.</div>
                 <div className={styles.question}>Tell me about yourself briefly</div>
                 <div>I have a little over 6 years experience in software development focusing on frontend UI. My most recent role was at Ford Motor Company. I worked on an internal Console management app using Javascript, React, where I did a little bit of everything from bug fixes, feature implementation, and documentation. Before that I was at a company called Autonomic that made a transportation API that was acquired by Ford where I was the 60th hire. Before that I worked on a small startup of four and I also worked at Cruise as an autonomous vehicle operator.</div>
                 <div className={styles.question}>Tell me about yourself briefly</div>
@@ -189,7 +189,6 @@ export default function Home() {
                 <div>I have a little over 6 years experience in software development focusing on frontend UI. My most recent role was at Ford Motor Company. I worked on an internal Console management app using Javascript, React, where I did a little bit of everything from bug fixes, feature implementation, and documentation. Before that I was at a company called Autonomic that made a transportation API that was acquired by Ford where I was the 60th hire. Before that I worked on a small startup of four and I also worked at Cruise as an autonomous vehicle operator.</div>
               </section>
             </div>
-          {/* </div> */}
         </main>
       </div>
     );
