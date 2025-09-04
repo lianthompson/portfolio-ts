@@ -1,8 +1,9 @@
 @use "_variables.module.scss";
 
 .page {
-  margin: 64px 32px;
-  // height: 100vh;
+  margin: 64px 0;
+  width: 100%;
+  padding: 0 32px;
   @include variables.tablet-ls {
     margin-top: 0;
     display: flex;
@@ -78,6 +79,7 @@
   align-items: start;
   width: 100%;
   background: #faf9f6;
+  // padding: 0 32px;
   @include variables.tablet-ls {
     padding-top: 64px;
     padding-bottom: 54px;
@@ -106,6 +108,9 @@
       width: 5rem;
     }
   }
+  &:active {
+    font-weight: 600;
+  }
 }
 
 .nav_mobile {
@@ -113,11 +118,13 @@
   display: flex;
   align-items: center;
   height: 60px;
-  border: 1px solid red;
   background: #faf9f6;
+  margin-left: -32px;
+  padding-left: 32px;
+  width: 100vw;
   @include variables.text-style(16px, 22px);
   position: sticky;
-  z-index: 10;
+  z-index: 20;
   top: 0;
 }
 
