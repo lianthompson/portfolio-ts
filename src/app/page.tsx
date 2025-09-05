@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useRouter, usePathname } from 'next/navigation';
 import React, { useEffect, useState, useCallback } from 'react';
 import cn from 'classnames';
-import useScreenSize from "./useScreenSize";
 import JobCard from "./jobCard";
 import styles from "./page.module.scss";
 
@@ -14,7 +13,6 @@ const icons = ["LinkedIn"]
 export default function Home() {
   const pathname = usePathname();
   const router = useRouter();
-  const screenSize = useScreenSize();
 
   const [hash, setHash] = useState('');
   const [innerHeight, setInnerHeight] = useState(0);
@@ -91,13 +89,6 @@ export default function Home() {
 
 
   if (innerHeight !== 0) {
-    const bodyStyles = window && window.getComputedStyle(document.body);
-    const mobile = bodyStyles.getPropertyValue('--breakpoint-xs');
-    const mobileLs = bodyStyles.getPropertyValue('--breakpoint-sm');
-    const tablet = bodyStyles.getPropertyValue('--breakpoint-md');
-    const tabletLs = parseInt(bodyStyles.getPropertyValue('--breakpoint-lg'));
-    const desktop = bodyStyles.getPropertyValue('--breakpoint-xl');
-
     return (
       <div className={styles.page}>
         <main className={styles.main}>
@@ -106,7 +97,6 @@ export default function Home() {
               <div className={styles.title}>Lian Thompson</div>
               <div className={styles.subtitle}>Frontend Engineer</div>
             </div>
-
             <div className={styles.description}>Freelance web developer open to work. I build mobile first responsive web pages.</div>
             <div className={styles.icon_container}>
               <a href={"https://github.com/lianthompson"} target="_blank"><Image src="/icons8-github.svg" alt="github" height={22} width={22} /></a>
@@ -114,7 +104,7 @@ export default function Home() {
               <a href={"https://www.linkedin.com/in/lianthompson/"} target="_blank"><Image src="/icons8-linkedin.svg" alt="linkedin" height={22} width={22} /></a>
             </div>
             <div className={styles.nav_container}>
-              {screenSize >= tabletLs && nav.map((item, i) => {
+              {nav.map((item, i) => {
                 return (
                   <Link
                     scroll={false}
@@ -130,7 +120,7 @@ export default function Home() {
           </div>
             <div className={styles.container}>
               <section className={styles.section} id="#about" ref={aboutRef}>
-                {screenSize < tabletLs && <div id="myHeader" className={styles.nav_mobile}> ABOUT</div>}
+                <div id="myHeader" className={styles.nav_mobile}> ABOUT</div>
                 <div className={styles.text}>
                   I specialize in bringing designs to life by creating reusable components and pixel perfect UI. I enjoy being part of the entire development cycle - from collaborating with stakeholders and users on how to make the best user experience, re-iterating, and shipping it. I'm happiest when the end users are happy.
                 </div>
@@ -146,7 +136,7 @@ export default function Home() {
               </section>
 
               <section className={styles.section} id="#experience" ref={experienceRef}>
-                {screenSize < tabletLs && <div id="mobileExperience" className={styles.nav_mobile}>EXPERIENCE</div>}
+                <div id="mobileExperience" className={styles.nav_mobile}>EXPERIENCE</div>
                 <JobCard
                   start={"MAY 2025"}
                   end={"PRESENT"}
@@ -174,7 +164,7 @@ export default function Home() {
                   description={"Completed Techtonica's inaugural Fullstack Web Developer apprenticeship with 10 other women. Six month full-stack web development program learning MERN stack."} />
               </section>
               <section className={styles.section} id="#faq" ref={faqRef}>
-                {screenSize < tabletLs && <div id="mobileFaq" className={styles.nav_mobile}>FAQ</div>}
+                <div id="mobileFaq" className={styles.nav_mobile}>FAQ</div>
                 <div className={styles.question}>Tell me about yourself briefly</div>
                 <div>I have a little over 6 years experience in software development focusing on frontend UI. My most recent role was at Ford Motor Company. I worked on an internal Console management app using Javascript, React, where I did a little bit of everything from bug fixes, feature implementation, and documentation. Before that I was at a company called Autonomic that made a transportation API that was acquired by Ford where I was the 60th hire. Before that I worked on a small startup of four and I also worked at Cruise as an autonomous vehicle operator.</div>
                 <div className={styles.question}>Tell me about yourself briefly</div>
