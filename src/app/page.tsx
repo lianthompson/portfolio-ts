@@ -27,7 +27,7 @@ export default function Home() {
 
     window.addEventListener("load", () => {
 
-      // Retrieve all help sections
+      // Retrieve all sections
       const sections = Array.from(document.querySelectorAll("section[id]"));
 
       const options = {
@@ -47,11 +47,14 @@ export default function Home() {
     });
   }, []);
 
+  interface EntryType {
+    entries: []
+  }
 
   // Once a scrolling event is detected, iterate all elements
   // whose visibility changed and highlight their navigation entry
-  const scrollHandler = (entries) => {
-    entries.forEach(entry => {
+  const scrollHandler = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry: any) => {
       const section = entry.target;
       const sectionId = section.id;
 
@@ -61,25 +64,25 @@ export default function Home() {
     });
   }
 
-  const experienceRef = useCallback(node => {
+  const experienceRef = useCallback((node: any) => {
     if (node !== null) {
       window.location.hash.includes("experience") && node.scrollIntoView({ behavior: 'smooth' })
     }
   }, []);
 
-  const aboutRef = useCallback(node => {
+  const aboutRef = useCallback((node: any) => {
     if (node !== null) {
       window.location.hash.includes("about") && node.scrollIntoView({ behavior: 'smooth' })
     }
   }, []);
 
-  const faqRef = useCallback(node => {
+  const faqRef = useCallback((node: any) => {
     if (node !== null) {
       window.location.hash.includes("faq") && node.scrollIntoView({ behavior: 'smooth' })
     }
   }, []);
 
-  const handleNavClick = (item) => {
+  const handleNavClick = (item: string) => {
     setHash(item);
     router.push(`${pathname}/${item}`);
     const element = document.getElementById(item);
