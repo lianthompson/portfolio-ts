@@ -11,11 +11,19 @@
     padding: 20px;
     transition: transform 0.2s ease-in-out; /* Adjust duration and timing function as needed */
     flex-direction: column;
+    &:hover {
+        .title_container {
+            font-style: italic;
+        }
+    }
     @include variables.tablet-ls {
         &:hover {
             cursor: pointer;
             transform: scale(1.02);
             background-color: #FFFFFF;
+                .title_container {
+                    font-style: unset;
+                }
         }
     }
 }

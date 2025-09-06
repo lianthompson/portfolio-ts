@@ -5,7 +5,6 @@ import {NextIntlClientProvider} from 'next-intl';
 import {getLocale} from 'next-intl/server';
 import { Geist, Geist_Mono, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
-import styles from "./page.module.scss";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,11 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-      <body className={cn(styles.body,`${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable}`)}>
-        {/* <div className={styles.title_container}>
-          <div className={styles.title}>Lian Thompson&mdash;</div>
-          <div className={styles.subtitle}>Frontend Engineer</div>
-        </div> */}
+      <body className={`${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable}`}>
         {children}
         {/* <NextIntlClientProvider>{children}</NextIntlClientProvider> */}
       </body>

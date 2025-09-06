@@ -96,7 +96,7 @@ export default function Home() {
               <div className={styles.title}>Lian Thompson</div>
               <div className={styles.subtitle}>Frontend Engineer</div>
             </div>
-            <div className={styles.description}>I build mobile first responsive web pages. Check out my<a className={styles.resume} href={"/LianThompson_Resume_2025.pdf"} target="_blank">résumé<div className={styles.dash_small}></div><Image className={styles.arrow} src="/icons8-right-arrow-24.png" alt="resume" height={16} width={16} /></a></div>
+            <div className={styles.description}>I build mobile first responsive web pages. <div className={styles.resume_container}>View my<a className={styles.resume} href={"/LianThompson_Resume_2025.pdf"} target="_blank">résumé<div className={styles.dash_small}></div><Image className={styles.arrow} src="/icons8-right-arrow-24.png" alt="resume" height={16} width={16} /></a></div></div>
             <div className={styles.icon_container}>
               <a href={"https://github.com/lianthompson"} target="_blank"><Image src="/icons8-github.svg" alt="github" height={22} width={22} /></a>
               <a href={"https://www.instagram.com/littleorphanliannie/"} target="_blank"><Image src="/icons8-instagram.svg" alt="instagram" height={22} width={22} /></a>

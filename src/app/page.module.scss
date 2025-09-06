@@ -41,15 +41,12 @@
 .title {
   font-family: var(--font-cormorant-garamond);
   font-weight: 600;
-  font-size: 2.75rem;
+  font-size: 3rem;
   @include variables.mobile-ls {
     &:after {
       content: "\2014";
       font-style: italic;
     }
-  }
-  @include variables.tablet {
-    font-size: 3rem;
   }
 }
 
@@ -65,11 +62,8 @@
   font-size: 1.75rem;
   margin-top: 8px;
   @include variables.mobile-ls {
-    font-size: 2.75rem;
-    margin-top: unset;
-  }
-  @include variables.tablet {
     font-size: 3rem;
+    margin-top: unset;
   }
 }
 
@@ -173,14 +167,18 @@
 
 .link {
   font-weight: 600;
+  &:hover {
+    font-style: italic;
+  }
 }
 
 .description {
   display: flex;
+  flex-direction: column;
   @include variables.text-style(16px, 22px);
-  margin-top: 14px;
-  @include variables.tablet {
-    margin-top: 20px;
+  margin-top: 20px;
+  @include variables.mobile-ls {
+    flex-direction: row;
   }
 }
 
@@ -194,6 +192,14 @@
 
 .question {
   font-weight: 600;
+}
+
+.resume_container {
+  display: flex;
+  font-style: italic;
+  @include variables.mobile-ls {
+    margin-left: 4px;
+  }
 }
 
 .resume {
