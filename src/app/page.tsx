@@ -211,6 +211,9 @@ export default function Home() {
               <div className={styles.question}>What's the biggest bug you deployed to production, and how did you respond?</div>
               <div>A dropdown I added to a lookup page did not show a complete list of items. Users would type or search for a specific group name to add to a table and the selection could not be added if it was not in the list. The problem was api call we were making to populate the list used pagination so we were unable to populate the complete list with good latency for the user. The solution was to switch the dropdown with an input that performed a GET operation when the user clicked ‘Add’ that would populate the table with the response. The tradeoff was that the user would need to have the specific Group ID to lookup vs being able to perform a search.</div>
             </section>
+            <footer className={styles.footer}>
+              Built with <a href={"https://nextjs.org/"} target="_blank" className={styles.link}>Next.js</a> and <a href={"https://sass-lang.com/"} target="_blank" className={styles.link}>Sass</a> in <a href={"https://code.visualstudio.com/"} target="_blank" className={styles.link}>Visual Studio Code</a>. Deployed with <a href={"https://vercel.com/"} target="_blank" className={styles.link}>Vercel</a>. All icons are courtesy of <a href={"https://icons8.com/"} target="_blank" className={styles.link}>Icons8</a>.
+              </footer>
           </div>
         </main>
       </div>

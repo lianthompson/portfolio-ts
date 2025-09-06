@@ -225,3 +225,9 @@
 .arrow {
   margin-top: 2px;
 }
+
+.footer {
+  opacity: .75;
+  font-size: 14px;
+  @include variables.text-style(14px, 18px);
+}
