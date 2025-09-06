@@ -1,9 +1,9 @@
 
-$mobile: 576;
-$mobile-ls: 768;
-$tablet: 992;
-$tablet-ls: 1200;
-$desktop: 1400;
+$mobile: 576px;
+$mobile-ls: 768px;
+$tablet: 992px;
+$tablet-ls: 1200px;
+$desktop: 1400px;
 
 @mixin text-style($font-size, $line-height) {
     font-size: $font-size;

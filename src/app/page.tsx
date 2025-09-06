@@ -127,7 +127,7 @@ export default function Home() {
                 I specialize in bringing designs to life by creating reusable components and pixel perfect UI. I enjoy being part of the entire development cycle - from collaborating with key stakeholders and users on how to make the best user experience, iterating, and shipping it. I'm happiest when end users are happy.
               </div>
               <div>
-                In my most recent role as a Software Engineer on the Platform Experience team at <a href="https://corporate.ford.com/articles/products/ford-and-google-to-accelerate-auto-innovation.html" target="_blank" className={styles.link}>Ford Motor Company</a>, I developed and maintained features for an internal Console management app and Developer Portal both utilizing a shared component library.
+                In my most recent role as a Software Engineer on the Platform Experience team at <a href="https://www.ford.com/" target="_blank" className={styles.link}>Ford Motor Company</a>, I developed and maintained features for an internal Console management app and Developer Portal both utilizing a shared component library.
               </div>
               <div>
                 During my career I've had the opportunity to build software with teams and companies of all sizes, from five person startups working directy with founders to a large team of nine. I've also participated in hackathons and <a href="https://devpost.com/software/sendput?_gl=1*1m0uf9n*_gcl_au*MjExMTMwNTIzMC4xNzU1MzYyODAx*_ga*MTE5OTk2MzcwMC4xNzU1MzYyODAx*_ga_0YHJK3Y10M*czE3NTUzNjI4MDEkbzEkZzEkdDE3NTUzNjI4MjYkajM1JGwwJGgw" target="_blank" className={styles.link}>placed in the final top 10</a> at ETHGlobal SF in 2018.
