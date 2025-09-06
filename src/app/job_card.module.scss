@@ -2,16 +2,15 @@
 
 .container {
     display: flex;
+    flex-direction: row;
     width: 100%;
+    gap: 20px;
     justify-content: space-between;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), -2px -2px 5px rgba(255, 255, 255, 0.5);
     border-radius: 12px;
     padding: 20px;
     transition: transform 0.2s ease-in-out; /* Adjust duration and timing function as needed */
     flex-direction: column;
-    @include variables.mobile-ls {
-        flex-direction: row;
-    }
     @include variables.tablet-ls {
         &:hover {
             cursor: pointer;
@@ -21,18 +20,45 @@
     }
 }
 
+.job_container {
+    display: flex;
+    flex-direction: column;
+        @include variables.mobile-ls {
+        flex-direction: row;
+    }
+}
+
 .dates {
     min-width: 200px;
     font-size: 12px;
     font-weight: 600;
+    text-transform: uppercase;
+    opacity: .75;
+}
+
+.title_container {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.title, .company {
+    font-weight: 600;
 }
 
 .title {
-    font-weight: 600;
-    margin-bottom: 6px;
+    &:after {
+        content: '|';
+        font-weight: 400;
+        margin-left: 8px;
+    }
 }
 
 .content {
     width: 100%;
     font-size: 14px;
+}
+
+.description {
+    opacity: .75;
 }
