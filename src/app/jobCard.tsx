@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from './job_card.module.scss';
 
 interface JobCardProps {
@@ -23,7 +24,11 @@ export default function JobCard({ jobs, link }: JobCardProps) {
                         <div className={styles.content}>
                             <div className={styles.title_container}>
                                 <div className={styles.title}>{job.title}</div>
-                                <div className={styles.company}>{job.company}</div>
+                                {idx === 0 && <div className={styles.company_container}> <div className={styles.company}>{job.company}</div>
+                                 <div className={styles.dash_container}>
+                                    <div className={styles.dash_small}></div>
+                                    <Image className={styles.arrow} src="/icons8-right-arrow-24.png" alt="resume" height={16} width={16} />
+                                </div></div>}
                             </div>
                             <div>{job.description}</div>
                         </div>
