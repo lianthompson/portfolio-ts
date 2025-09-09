@@ -1,0 +1,11 @@
+.pill_outer_container {
+    display: flex;
+    font-weight: 600;
+    color: black;
+}
+.pill_container {
+    border: 1px solid black;
+    display: flex;
+    border-radius: 12px;
+    padding: 0 6px;
+}

@@ -47,10 +47,6 @@ export default function Home() {
     });
   }, []);
 
-  interface EntryType {
-    entries: []
-  }
-
   // Once a scrolling event is detected, iterate all elements
   // whose visibility changed and highlight their navigation entry
   const scrollHandler = (entries: IntersectionObserverEntry[]) => {
@@ -146,7 +142,8 @@ export default function Home() {
                     end: "May 2025",
                     title: "Software Engineer II",
                     company: "Ford Motor Company",
-                    description: "Own feature development throughout entire development process. Maintain and develop critical components across two internal applications used by developers and support teams. Ensure REST API best practices across teams."
+                    description: "Own feature development throughout entire development process. Maintain and develop critical components across two internal applications used by developers and support teams. Ensure REST API best practices across teams.",
+                    skills: ['Javascript', 'React', 'Redux', 'Scss', 'Figma']
                   }
                 ]}
               />
@@ -154,25 +151,28 @@ export default function Home() {
                 link={"https://autonomic.com/#:~:text=Home%20%2D%20Autonomic,vehicle%20models%20and%20connectivity%20devices."}
                 jobs={[
                   {
-                    start: "February 2022",
+                    start: "Feb 2022",
                     end: "May 2023",
                     title: "Software Engineer II",
                     company: "Autonomic",
-                    description: "Implement new features and bug fixes. Mentor incoming team members and interns through pair programming, code review, and 1:1s."
+                    description: "Implement new features and bug fixes. Mentor incoming team members and interns through pair programming, code review, and 1:1s.",
+                    skills: ['Javascript', 'React', 'Redux', 'Scss', 'Figma']
                   },
                   {
-                    start: "October 2019",
+                    start: "Oct 2019",
                     end: "May 2022",
                     title: "Software Engineer",
                     company: "Autonomic",
-                    description: "Maintain and enhance components for internal Console management application and Developer Portal."
+                    description: "Maintain and enhance components for internal Console management application and Developer Portal.",
+                    skills: ['Javascript', 'React', 'Redux', 'Scss', 'Figma']
                   },
                   {
                     start: "July 2019",
-                    end: "October 2019",
+                    end: "Oct 2019",
                     title: "Software Engineer Intern",
                     company: "Autonomic",
-                    description: "Contributed to bug fixes and built features for an internal dashboard application for demo-ing services."
+                    description: "Contributed to bug fixes and built features for an internal dashboard application for demo-ing services.",
+                    skills: ['Javascript', 'React', 'Redux', 'Scss', 'Figma']
                   }
                 ]}
               />
@@ -184,7 +184,8 @@ export default function Home() {
                     end: "March 2019",
                     title: "Jr Software Engineer",
                     company: "Colark",
-                    description: "Build and deploy company marketing site."
+                    description: "Build and deploy company marketing site.",
+                    skills: ['Gatsby.js', 'Tailwind', 'GraphQL', 'Figma']
                   }
                 ]}
               />
@@ -196,7 +197,8 @@ export default function Home() {
                     end: "June 2019",
                     title: "Software Engineer Apprentice",
                     company: "Techtonica",
-                    description: "Completed Techtonica's inaugural Fullstack Web Developer apprenticeship with 10 other women. Six month full-stack web development program learning MERN stack."
+                    description: "Completed Techtonica's inaugural Fullstack Web Developer apprenticeship with 10 other women. Six month full-stack web development program learning MERN stack.",
+                    skills: ['MySql', 'Express', 'React', 'Node.js']
                   }
                 ]}
               />

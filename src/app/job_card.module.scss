@@ -33,7 +33,7 @@
 }
 
 .dates {
-    min-width: 200px;
+    min-width: 180px;
     font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
@@ -85,4 +85,11 @@
             margin-right: 8px;
         }
     }
+}
+
+.skills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
 }

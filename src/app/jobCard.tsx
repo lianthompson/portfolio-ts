@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Pill from "./pill";
 import styles from './job_card.module.scss';
 
 interface JobCardProps {
@@ -11,7 +12,8 @@ interface Job {
     company: string,
     start: string,
     end: string,
-    description: string
+    description: string,
+    skills: string[]
 }
 
 export default function JobCard({ jobs, link }: JobCardProps) {
@@ -31,7 +33,13 @@ export default function JobCard({ jobs, link }: JobCardProps) {
                                 </div></div>}
                             </div>
                             <div>{job.description}</div>
+                            <div className={styles.skills}>
+                                {job.skills?.map((skill, idx) => (
+                                    <Pill key={idx} text={skill} />
+                                ))}
+                            </div>
                         </div>
+
                     </div>
                 ))}
             </div>
