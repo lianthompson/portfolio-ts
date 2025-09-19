@@ -5,6 +5,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import React, { useEffect, useState, useCallback } from 'react';
 import cn from 'classnames';
 import JobCard from "./jobCard";
+import { JOBS_LIST } from "./constants";
 import styles from "./page.module.scss";
 
 const nav = ["about", "experience", "faq"];
@@ -134,74 +135,9 @@ export default function Home() {
             </section>
             <section className={styles.section} id="#experience" ref={experienceRef}>
               <div id="mobileExperience" className={styles.nav_mobile}>EXPERIENCE</div>
-              <JobCard
-                link={"https://www.ford.com/"}
-                jobs={[
-                  {
-                    start: "May 2023",
-                    end: "May 2025",
-                    title: "Software Engineer II",
-                    company: "Ford Motor Company",
-                    description: "Own feature development throughout entire development process. Maintain and develop critical components across two internal applications used by developers and support teams. Ensure REST API best practices across teams.",
-                    skills: ['Javascript', 'React', 'Redux', 'Scss', 'Figma']
-                  }
-                ]}
-              />
-              <JobCard
-                link={"https://autonomic.com/#:~:text=Home%20%2D%20Autonomic,vehicle%20models%20and%20connectivity%20devices."}
-                jobs={[
-                  {
-                    start: "Feb 2022",
-                    end: "May 2023",
-                    title: "Software Engineer II",
-                    company: "Autonomic",
-                    description: "Implement new features and bug fixes. Mentor incoming team members and interns through pair programming, code review, and 1:1s.",
-                    skills: ['Javascript', 'React', 'Redux', 'Scss', 'Figma']
-                  },
-                  {
-                    start: "Oct 2019",
-                    end: "May 2022",
-                    title: "Software Engineer",
-                    company: "Autonomic",
-                    description: "Maintain and enhance components for internal Console management application and Developer Portal.",
-                    skills: ['Javascript', 'React', 'Redux', 'Scss', 'Figma']
-                  },
-                  {
-                    start: "July 2019",
-                    end: "Oct 2019",
-                    title: "Software Engineer Intern",
-                    company: "Autonomic",
-                    description: "Contributed to bug fixes and built features for an internal dashboard application for demo-ing services.",
-                    skills: ['Javascript', 'React', 'Redux', 'Scss', 'Figma']
-                  }
-                ]}
-              />
-              <JobCard
-                link={"https://www.linkedin.com/company/colark/about/"}
-                jobs={[
-                  {
-                    start: "July 2018",
-                    end: "March 2019",
-                    title: "Jr Software Engineer",
-                    company: "Colark",
-                    description: "Build and deploy company marketing site.",
-                    skills: ['Gatsby.js', 'Tailwind', 'GraphQL', 'Figma']
-                  }
-                ]}
-              />
-              <JobCard
-                link={"https://techtonica.org/"}
-                jobs={[
-                  {
-                    start: "Jan 2018",
-                    end: "June 2019",
-                    title: "Software Engineer Apprentice",
-                    company: "Techtonica",
-                    description: "Completed Techtonica's inaugural Fullstack Web Developer apprenticeship with 10 other women. Six month full-stack web development program learning MERN stack.",
-                    skills: ['MySql', 'Express', 'React', 'Node.js']
-                  }
-                ]}
-              />
+              {JOBS_LIST.map((job, idx) => {
+                return <JobCard key={idx} link={`${job[0]}`} jobs={job[1] as []}/>
+              })}
             </section>
             <section className={styles.section} id="#faq" ref={faqRef}>
               <div id="mobileFaq" className={styles.nav_mobile}>FAQ</div>

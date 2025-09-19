@@ -4,14 +4,14 @@ import styles from './job_card.module.scss';
 
 interface JobCardProps {
     jobs: Job[],
-    link: string
+    link: string,
 }
 
 interface Job {
-    title: string,
-    company: string,
     start: string,
     end: string,
+    title: string,
+    company: string,
     description: string,
     skills: string[]
 }
