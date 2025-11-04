@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { useMessages } from 'next-intl';
 import {NextIntlClientProvider} from 'next-intl';
 import {getLocale} from 'next-intl/server';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Geist, Geist_Mono, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
@@ -40,6 +41,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} ${cormorantGaramond.variable}`}>
         {children}
         <Analytics/>
+        <SpeedInsights/>
         {/* <NextIntlClientProvider>{children}</NextIntlClientProvider> */}
       </body>
     </html>
