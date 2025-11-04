@@ -1,6 +1,16 @@
 
 
 export const JOBS_LIST = [
+    ["https://www.pbteen.com/",
+        [{
+            start: "Oct 2025",
+            end: "Present",
+            title: "Web Developer",
+            company: "Williams Sonoma (contract)",
+            description: "Collaborate with designers and site managers to deliver pixel perfect UI for PotteryBarn teen.",
+            skills: ['Scss', 'Tailwind', 'Jenkins', 'Figma', 'Adobe']
+        }]
+    ],
     ["https://www.ford.com/",
         [{
             start: "May 2023",
@@ -8,7 +18,7 @@ export const JOBS_LIST = [
             title: "Software Engineer II",
             company: "Ford Motor Company",
             description: "Own feature development throughout entire development process. Maintain and develop critical components across two internal applications used by developers and support teams. Ensure REST API best practices across teams.",
-            skills: ['Javascript', 'React', 'Redux', 'Scss', 'Figma']
+            skills: ['Javascript', 'React', 'Redux', 'Scss', 'Figma', 'Concourse']
         }]
     ],
     ["https://autonomic.com/#:~:text=Home%20%2D%20Autonomic,vehicle%20models%20and%20connectivity%20devices.",
@@ -18,7 +28,7 @@ export const JOBS_LIST = [
             title: "Software Engineer II",
             company: "Autonomic",
             description: "Implement new features and bug fixes. Mentor incoming team members and interns through pair programming, code review, and 1:1s.",
-            skills: ['Javascript', 'React', 'Redux', 'Scss', 'Figma']
+            skills: ['Javascript', 'React', 'Redux', 'Scss', 'Figma', 'Concourse']
         },
         {
             start: "Oct 2019",
@@ -26,7 +36,7 @@ export const JOBS_LIST = [
             title: "Software Engineer",
             company: "Autonomic",
             description: "Maintain and enhance components for internal Console management application and Developer Portal.",
-            skills: ['Javascript', 'React', 'Redux', 'Scss', 'Figma']
+            skills: []
         },
         {
             start: "July 2019",
@@ -34,7 +44,7 @@ export const JOBS_LIST = [
             title: "Software Engineer Intern",
             company: "Autonomic",
             description: "Contributed to bug fixes and built features for an internal dashboard application for demo-ing services.",
-            skills: ['Javascript', 'React', 'Redux', 'Scss', 'Figma']
+            skills: []
         }]
     ],
     ["https://www.linkedin.com/company/colark/about/",
