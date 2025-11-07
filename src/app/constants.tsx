@@ -17,7 +17,7 @@ export const JOBS_LIST = [
             end: "May 2025",
             title: "Software Engineer II",
             company: "Ford Motor Company",
-            description: "Own feature development throughout entire development process. Maintain and develop critical components across two internal applications used by developers and support teams. Ensure REST API best practices across teams.",
+            description: "Own feature development throughout entire development process. Maintain and develop critical components across two internal applications used by developers and support teams. Responsible for integrating new APIs into Javascript SDK, Console application, and ensure REST best practices were being followed.",
             skills: ['Javascript', 'React', 'Redux', 'Scss', 'Figma', 'Concourse']
         }]
     ],
