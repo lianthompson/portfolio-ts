@@ -6,9 +6,9 @@ export const JOBS_LIST = [
             start: "Oct 2025",
             end: "Present",
             title: "Web Developer",
-            company: "Williams Sonoma",
-            description: "Collaborate with designers and site managers to deliver pixel perfect UI for PotteryBarn teen. Responsible for styling updates in a weekly deployment schedule along with ad-hoc deliverables.",
-            skills: ['Scss', 'Tailwind', 'CSS', 'Jenkins', 'Figma', 'Adobe']
+            company: "Williams Sonoma (Contract)",
+            description: "Collaborate with creative, site managers, and Frontend team to deliver pixel perfect UI for PotteryBarn teen and Dormify brands. Responsible for styling updates in a weekly deployment schedule along with ad-hoc deliverables.",
+            skills: ['JavaScript', 'Tailwind', 'Scss/CSS', 'Jenkins', 'Figma', 'Adobe']
         }]
     ],
     ["https://www.ford.com/",
