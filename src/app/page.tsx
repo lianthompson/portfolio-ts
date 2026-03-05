@@ -96,7 +96,7 @@ export default function Home() {
               <div className={styles.title}>Lian Thompson</div>
               <div className={styles.subtitle}>Frontend Engineer</div>
             </div>
-            <div className={styles.description}>I build mobile first responsive web pages. <div className={styles.resume_container}>View my<a className={styles.resume} href={"/LianThompson_Resume_2025.pdf"} target="_blank">résumé<div className={styles.dash_small}></div><Image className={styles.arrow} src="/icons8-right-arrow-24.png" alt="resume" height={16} width={16} /></a></div></div>
+            <div className={styles.description}>I build mobile first responsive web pages. <div className={styles.resume_container}>View my<a className={styles.resume} href={"/Lian_Thompson_Resume.pdf"} target="_blank">résumé<div className={styles.dash_small}></div><Image className={styles.arrow} src="/icons8-right-arrow-24.png" alt="resume" height={16} width={16} /></a></div></div>
             <div className={styles.icon_container}>
               <a href={"https://github.com/lianthompson"} target="_blank"><Image src="/icons8-github.svg" alt="github" height={22} width={22} /></a>
               <a href={"https://www.instagram.com/littleorphanliannie/"} target="_blank"><Image src="/icons8-instagram.svg" alt="instagram" height={22} width={22} /></a>
@@ -124,7 +124,7 @@ export default function Home() {
                 I specialize in bringing designs to life by creating reusable components and pixel perfect UI. I enjoy being part of the entire development cycle - from collaborating with key stakeholders and users on how to make the best user experience, iterating, and shipping it. I'm happiest when end users are happy.
               </div>
               <div>
-                In my current role at Williams Sonoma I work on the brand frontend development team for <a href="https://www.pbteen.com" target="_blank" className={styles.link}>Pottery Barn Teen</a>. I collaborate with designers and site managers to deliver brand specific style and config updates.
+                In my current role at Williams Sonoma I work on the brand frontend development team for <a href="https://www.pbteen.com" target="_blank" className={styles.link}>Pottery Barn Teen</a> and Dormify. I collaborate with designers and site managers to deliver brand specific style and config updates.
               </div>
               <div>
                 Previously, as a Software Engineer on the Platform Experience team at <a href="https://www.ford.com/" target="_blank" className={styles.link}>Ford Motor Company</a>, I developed and maintained features for an internal Console management app and Developer Portal both utilizing a shared component library.
@@ -133,7 +133,7 @@ export default function Home() {
                 During my career I've had the opportunity to build software with teams and companies of all sizes, from five person startups working directy with founders to a large team of nine. I've also participated in hackathons and <a href="https://devpost.com/software/sendput?_gl=1*1m0uf9n*_gcl_au*MjExMTMwNTIzMC4xNzU1MzYyODAx*_ga*MTE5OTk2MzcwMC4xNzU1MzYyODAx*_ga_0YHJK3Y10M*czE3NTUzNjI4MDEkbzEkZzEkdDE3NTUzNjI4MjYkajM1JGwwJGgw" target="_blank" className={styles.link}>placed in the final top 10</a> at ETHGlobal SF in 2018.
               </div>
               <div>
-                Meanwhile, when I'm not pushing to GitHub, you can find me climbing, weaving, walking, and giggling. But more often than not I'm hanging out with my partner and our two cats.
+                Meanwhile, when I'm not pushing to GitHub, you can find me climbing, crafting, or walking. But more often than not I'm hanging out with my partner and our two cats.
               </div>
             </section>
             <section className={styles.section} id="#experience" ref={experienceRef}>
@@ -147,9 +147,9 @@ export default function Home() {
               <div className={styles.question}>Explain something that you have a deep amount of knowledge in as simple as you can.</div>
               <div>An API stands for Application Program Interface and it is quite literally the interface between the user or client side of an application and the backend. An easy way to think of this is the waiter at a restaurant taking your order, you are the user/client and delivering it to the kitchen which is the backend. Likewise when the kitchen/backend is done preparing your order or retrieving the data you requested, the API will deliver it back to you.</div>
               <div className={styles.question}>Tell me about a time you've failed at something for work.</div>
-              <div>During my internship at Autonomic I was tasked with removing certain items from a list. The for loop I’d written had a bad condition and ended up deleting all the data. Luckily this was in our staging environment and was not pushed to production, but it did not go unnoticed. I didn’t handle the situation perfectly - I told my mentor and he acted so nonchalant about it that I didn’t announce it further. I later had a meeting with my manager and learned that I should have gone to him with what happened so our team could get ahead of the situation and address it to other teams, rather than vice versa.</div>
+              <div>During my internship at Autonomic I was tasked with removing certain items from a list. The for loop I’d written had a bad condition and ended up deleting all the data. Luckily this was in our staging environment and was not pushed to production, but it did not go unnoticed. I shared what happened with my mentor and their reaction was nonchalant about it so I didn’t announce it further. I later had a meeting with my manager and learned that I should have shared what happened so our team could get ahead of the situation and address it to other teams, rather than vice versa.</div>
               <div className={styles.question}>What are you looking for in your next role?</div>
-              <div>I’m looking for a role where I can grow and learn as a developer, there’s opportunity for career development, and I can work with smart passionate nice people.</div>
+              <div>I’m looking for a role where I can grow and learn as a developer, where there’s opportunity for career advancement, and I can work with smart passionate nice people.</div>
               <div className={styles.question}>Explain a problem you worked on in the past in depth.</div>
               <div>A list table in our console app was displaying incomplete data for connectivity history. The endpoint response showed multiple instances of activity and the UI was inconsistent. It was discovered that the data not being displayed had duplicate timestamps down to the millisecond. On the frontend, because the events did not include unique identifiers, we were generating GUIDs for the table using the timestamp, so the initial fix was for the backend team to update the endpoint to return a timestamp that included nanoseconds. This dragged on so instead we used the index with the timestamp to generate the GUID for the table.</div>
               <div className={styles.question}>What's the biggest bug you deployed to production, and how did you respond?</div>
