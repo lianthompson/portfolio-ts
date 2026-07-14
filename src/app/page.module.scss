@@ -190,6 +190,12 @@
   }
 }
 
+.question_section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 .question {
   font-weight: 600;
 }

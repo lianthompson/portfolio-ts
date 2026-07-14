@@ -5,7 +5,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import React, { useEffect, useState, useCallback } from 'react';
 import cn from 'classnames';
 import JobCard from "./jobCard";
-import { JOBS_LIST } from "./constants";
+import { JOBS_LIST, FAQ_LIST } from "./constants";
 import styles from "./page.module.scss";
 
 const nav = ["about", "experience", "faq"];
@@ -124,7 +124,7 @@ export default function Home() {
                 I specialize in bringing designs to life by creating reusable components and pixel perfect UI. I enjoy being part of the entire development cycle - from collaborating with key stakeholders and users on how to make the best user experience, iterating, and shipping it. I'm happiest when end users are happy.
               </div>
               <div>
-                In my current role at Williams Sonoma I work on the brand frontend development team for <a href="https://www.pbteen.com" target="_blank" className={styles.link}>Pottery Barn Teen</a> and Dormify. I collaborate with designers and site managers to deliver brand specific style and config updates.
+                In my current role at Williams Sonoma I work on the brand frontend development team for <a href="https://www.pbteen.com" target="_blank" className={styles.link}>Pottery Barn Teen</a> and <a href="https://www.dormify.com" target="_blank" className={styles.link}>Dormify</a>. I collaborate with designers and site managers to deliver brand specific style and config updates.
               </div>
               <div>
                 Previously, as a Software Engineer on the Platform Experience team at <a href="https://www.ford.com/" target="_blank" className={styles.link}>Ford Motor Company</a>, I developed and maintained features for an internal Console management app and Developer Portal both utilizing a shared component library.
@@ -144,16 +144,12 @@ export default function Home() {
             </section>
             <section className={styles.section} id="#faq" ref={faqRef}>
               <div id="mobileFaq" className={styles.nav_mobile}>FAQ</div>
-              <div className={styles.question}>Explain something that you have a deep amount of knowledge in as simple as you can.</div>
-              <div>An API stands for Application Program Interface and it is quite literally the interface between the user or client side of an application and the backend. An easy way to think of this is the waiter at a restaurant taking your order, you are the user/client and delivering it to the kitchen which is the backend. Likewise when the kitchen/backend is done preparing your order or retrieving the data you requested, the API will deliver it back to you.</div>
-              <div className={styles.question}>Tell me about a time you've failed at something for work.</div>
-              <div>During my internship at Autonomic I was tasked with removing certain items from a list. The for loop I’d written had a bad condition and ended up deleting all the data. Luckily this was in our staging environment and was not pushed to production, but it did not go unnoticed. I shared what happened with my mentor and their reaction was nonchalant about it so I didn’t announce it further. I later had a meeting with my manager and learned that I should have shared what happened so our team could get ahead of the situation and address it to other teams, rather than vice versa.</div>
-              <div className={styles.question}>What are you looking for in your next role?</div>
-              <div>I’m looking for a role where I can grow and learn as a developer, where there’s opportunity for career advancement, and I can work with smart passionate nice people.</div>
-              <div className={styles.question}>Explain a problem you worked on in the past in depth.</div>
-              <div>A list table in our console app was displaying incomplete data for connectivity history. The endpoint response showed multiple instances of activity and the UI was inconsistent. It was discovered that the data not being displayed had duplicate timestamps down to the millisecond. On the frontend, because the events did not include unique identifiers, we were generating GUIDs for the table using the timestamp, so the initial fix was for the backend team to update the endpoint to return a timestamp that included nanoseconds. This dragged on so instead we used the index with the timestamp to generate the GUID for the table.</div>
-              <div className={styles.question}>What's the biggest bug you deployed to production, and how did you respond?</div>
-              <div>A dropdown I added to a lookup page did not show a complete list of items. Users would type or search for a specific group name to add to a table and the selection could not be added if it was not in the list. The problem was api call we were making to populate the list used pagination so we were unable to populate the complete list with good latency for the user. The solution was to switch the dropdown with an input that performed a GET operation when the user clicked ‘Add’ that would populate the table with the response. The tradeoff was that the user would need to have the specific Group ID to lookup vs being able to perform a search.</div>
+              {FAQ_LIST.map((item, idx ) => {
+                return <div className={styles.question_section} key={idx}>
+                    <div className={styles.question}>{item.question}</div>
+                    <div>{item.answer}</div>
+                  </div>
+              })}
             </section>
             <footer className={styles.footer}>
               Built with <a href={"https://nextjs.org/"} target="_blank" className={styles.link}>Next.js</a> and <a href={"https://sass-lang.com/"} target="_blank" className={styles.link}>Sass</a> in <a href={"https://code.visualstudio.com/"} target="_blank" className={styles.link}>Visual Studio Code</a>. Deployed with <a href={"https://vercel.com/"} target="_blank" className={styles.link}>Vercel</a>. All icons are courtesy of <a href={"https://icons8.com/"} target="_blank" className={styles.link}>Icons8</a>.
